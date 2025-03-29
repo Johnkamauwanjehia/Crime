@@ -212,6 +212,6 @@ elif analysis_type == "Classification Analysis":
         st.error(f"Classification failed: {str(e)}")
         st.stop()
 
-# requirements.txt content
+# Properly formatted requirements section
 st.sidebar.markdown("""
 **Requirements**:
