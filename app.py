@@ -8,6 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error, accuracy_score, classification_report, confusion_matrix, roc_curve, auc
+import statsmodels.api as sm  # Required for LOWESS trendline
 
 # Configure page settings
 st.set_page_config(page_title="Security Analysis", layout="wide", page_icon="🔒")
