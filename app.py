@@ -7,8 +7,7 @@ from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import mean_squared_error, accuracy_score, classification_report, confusion_matrix, roc_curve, auc
-import statsmodels.api as sm
+from sklearn.metrics import mean_squared_error, accuracy_score, roc_curve, auc
 
 # Configure page settings
 st.set_page_config(page_title="Security Analysis", layout="wide", page_icon="🔒")
@@ -51,6 +50,16 @@ analysis_type = st.sidebar.selectbox("Select Analysis Type", [
     "Regression Analysis",
     "Classification Analysis"
 ])
+
+# Properly formatted requirements section
+st.sidebar.markdown("""
+**Requirements**: 
+- Streamlit: `pip install streamlit`
+- Pandas: `pip install pandas`
+- Numpy: `pip install numpy`
+- Plotly: `pip install plotly`
+- Scikit-learn: `pip install scikit-learn`
+""")
 
 # ================== Main Content ==================
 if analysis_type == "Data Overview":
@@ -148,6 +157,7 @@ elif analysis_type == "Classification Analysis":
             .map(verification_mapping)
             .fillna(0)
             .astype(int)
+        )
         
         # Filter valid target values
         data_copy = data_copy[data_copy['Verified'].isin([0, 1])]
@@ -211,7 +221,3 @@ elif analysis_type == "Classification Analysis":
     except Exception as e:
         st.error(f"Classification failed: {str(e)}")
         st.stop()
-
-# Properly formatted requirements section
-st.sidebar.markdown("""
-**Requirements**:
